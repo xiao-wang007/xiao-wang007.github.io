@@ -257,22 +257,6 @@ Please refer to the OpenCV API for more information. Create a file `third_step.p
    if the colour is detected, if it’s over a certain size, move towards the
    object. If the second colour is detected then stop. The skeleton code can be found in `Skeleton_Code_Fourth_Step.py`.
 
-## Submit to GitHub
-
-Submission instructions: When you think you have completed this worksheet, add,
-commit, and push your new files and changes to the git repository with the
-correct git message “Lab5 completed.”:
-
-```
-cd $HOME/ros2_ws/src/lab5/ 
-git add . 
-git commit -m "Lab5 completed."
-git push
-```
-
-Please commit your completed versions of exercises 1, 3, 4 from Part A and Part B:
-first_step.py, third_step.py, fourth_step.py and stitch_step.py.
-
 ## Remarks and Checklist
 
 Please check, by the end of this worksheet, that ...

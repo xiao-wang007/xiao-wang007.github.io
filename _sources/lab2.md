@@ -399,7 +399,7 @@ Python programs available to ROS. Test that your code works as expected by
 running `ros2 launch lab2 numeric_chatter.py`.
 
 :::
-#### Submission instructions
+#### Saving your code on github
 :::
 
 When you think you have completed this worksheet, add, commit, and push your

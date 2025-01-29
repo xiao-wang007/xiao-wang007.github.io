@@ -397,23 +397,6 @@ A few points to consider:
    squares, then only search through patches; heuristics, and sampling based 
    methods, potential field, etc. 
 
-
-
-## Submission instructions
-
-When you think you have completed this worksheet, add, commit, and push your
-new files (your map’s pgm and yaml files, as well as the changed
-`go_to_specific_point_on_map.py` script, and any other related files you might
-have created) and changes to the git repository with the correct git message
-“Lab4 completed.”:
-
-```
-cd $HOME/ros2_ws/src/lab4
-git add .
-git commit -m "Lab4 completed."
-git push
-```
-
 ## Remarks and Checklist
 
 As you conclude this worksheet, you have now developed all the necessary skills
