@@ -282,7 +282,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">7.1. Worksheet Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.2. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">7.3. Mapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autonomous-navigation">7.4. Autonomous Navigation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">7.4. Navigation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission-instructions">7.5. Submission instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">7.6. Remarks and Checklist</a></li>
 </ul>
@@ -492,13 +492,12 @@ example map files: <code class="docutils literal notranslate"><span class="pre">
 recommended to practice and learn how to create a map yourself, as this skill
 will be essential when working with the real robot and for your group project.</p>
 </section>
-<section id="autonomous-navigation">
-<h2><span class="section-number">7.4. </span>Autonomous Navigation<a class="headerlink" href="#autonomous-navigation" title="Link to this heading">#</a></h2>
-<p>Now that you have successfully constructed a map, the next step is to enable
-the robot to navigate autonomously within its environment.</p>
-<p>Remember that, when you use the autonomous navigation stack, to kill the
+<section id="navigation">
+<h2><span class="section-number">7.4. </span>Navigation<a class="headerlink" href="#navigation" title="Link to this heading">#</a></h2>
+<p>Now that you have successfully constructed a map, you can try to command the robot
+to go somewhere using the Rviz GUI. Remember that, when you use the autonomous navigation stack, to kill the
 tele-operation node as it can interfere with the navigation node.</p>
-<p>To initiate the autonomous navigation, execute the following command in a new terminal
+<p>To initiate navigation, execute the following command in a new terminal
 window, ensuring that you replace the placeholder path to a map file
 with the actual path to your map file:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/ros2_ws/src/lab4/maps/mymap.yaml
@@ -567,7 +566,7 @@ method we command the robot to go to <code class="docutils literal notranslate">
 <p class="admonition-title">Note</p>
 <p>Actions in ROS are alternatives to ROS services and we will introduce them at a
 later robotics lecture when we go through advanced ROS features. For now,
-actions are similar to ROS Servives in that you send a request and you get a
+actions are similar to ROS Services in that you send a request and you get a
 response, but they offer more capabilities and are appropriate for complex
 tasks that can take a while to complete, like motion planning.</p>
 </div>
@@ -596,7 +595,7 @@ pitch, and roll), the ROS navigation stack requires the orientation to be
 specified in quaternions, which are better suited for 3D rotation without
 suffering from issues like gimbal lock. The quaternion representation provides
 a more robust and mathematically sound way to handle the robot’s orientation in
-three-dimensional space.</p>
+Cartesian space.</p>
 <p>Then we send the goal here:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">send_goal_future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_client</span><span class="o">.</span><span class="n">send_goal_async</span><span class="p">(</span><span class="n">goal_msg</span><span class="p">,</span> <span class="n">feedback_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feedback_callback</span><span class="p">)</span>
 </pre></div>
@@ -634,6 +633,22 @@ Modify the Python script to inject your new coordinate. Don’t forget to run
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">lab4</span> <span class="n">go_to_pose</span>
 </pre></div>
 </div>
+<div class="docutils">
+<h4 class="rubric" id="exercise-3-think-how-you-would-design-your-motion-planer">Exercise 3: Think how you would design your motion planer?</h4>
+</div>
+<p>A few points to consider:</p>
+<ol class="arabic simple">
+<li><p>With the map (black being the obstacles and white being the free space) and
+the reference frame to which it associates, we have our configuration
+space of the robot <span class="math notranslate nohighlight">\(\mathcal{C}\)</span>.</p></li>
+<li><p>Each pixel is assigned with a coordinate relative to the frame. The map is
+essentially a discretization of a continuous space. Do we need such a high
+dimension space to search for the coordinate (or linear pose) to tackle a
+navigation task?</p></li>
+<li><p>Can we do some dimension reduction? Such as discretizing the free space by
+squares, then only search through patches; heuristics, and sampling based
+methods, potential field, etc.</p></li>
+</ol>
 </section>
 <section id="submission-instructions">
 <h2><span class="section-number">7.5. </span>Submission instructions<a class="headerlink" href="#submission-instructions" title="Link to this heading">#</a></h2>
@@ -717,7 +732,7 @@ Assistants of the module for help during the lab hours, or contact me.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">7.1. Worksheet Objective</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">7.2. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping">7.3. Mapping</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autonomous-navigation">7.4. Autonomous Navigation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigation">7.4. Navigation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submission-instructions">7.5. Submission instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">7.6. Remarks and Checklist</a></li>
 </ul>
@@ -734,7 +749,7 @@ Assistants of the module for help during the lab hours, or contact me.</p>
   <div class="footer-item">
     
 <p class="component-author">
-By Rafael Papallas, Andy Bulpitt and Duygu Sarikaya
+By Yanlong Huang, Andy Bulpitt, Xiao Wang
 </p>
 
   </div>
@@ -744,7 +759,7 @@ By Rafael Papallas, Andy Bulpitt and Duygu Sarikaya
 
   <p class="copyright">
     
-      © Copyright 2024, Rafael Papallas, Andy Bulpitt and Duygu Sarikaya.
+      © Copyright 2025, Yanlong Huang, Andy Bulpitt, Xiao Wang.
       <br/>
     
   </p>

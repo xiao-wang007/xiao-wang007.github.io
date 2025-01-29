@@ -15,8 +15,3 @@ COMP3631 Lab Worksheets
     lab5.md
     using_the_real_robot.md
     lab6.md
-    .. project.md
-    .. project-progress-report.md
-    .. project-group-code.md
-    .. project-final-group-report.md
-    .. project-up-and-running.md

@@ -213,15 +213,13 @@ example map files: `examplemap.yaml` and `examplemap.pgm`. However, it's highly
 recommended to practice and learn how to create a map yourself, as this skill
 will be essential when working with the real robot and for your group project.
 
-## Autonomous Navigation
+## Navigation
 
-Now that you have successfully constructed a map, the next step is to enable
-the robot to navigate autonomously within its environment.
-
-Remember that, when you use the autonomous navigation stack, to kill the 
+Now that you have successfully constructed a map, you can try to command the robot
+to go somewhere using the Rviz GUI. Remember that, when you use the autonomous navigation stack, to kill the 
 tele-operation node as it can interfere with the navigation node.
 
-To initiate the autonomous navigation, execute the following command in a new terminal
+To initiate navigation, execute the following command in a new terminal
 window, ensuring that you replace the placeholder path to a map file
 with the actual path to your map file:
 
@@ -299,7 +297,7 @@ method we command the robot to go to `x=5.55, y=-3.71, theta=0.0`.
 
 Actions in ROS are alternatives to ROS services and we will introduce them at a
 later robotics lecture when we go through advanced ROS features. For now,
-actions are similar to ROS Servives in that you send a request and you get a
+actions are similar to ROS Services in that you send a request and you get a
 response, but they offer more capabilities and are appropriate for complex
 tasks that can take a while to complete, like motion planning.
 
@@ -335,7 +333,7 @@ pitch, and roll), the ROS navigation stack requires the orientation to be
 specified in quaternions, which are better suited for 3D rotation without
 suffering from issues like gimbal lock. The quaternion representation provides
 a more robust and mathematically sound way to handle the robot's orientation in
-three-dimensional space.
+Cartesian space.
 
 Then we send the goal here:
 
@@ -382,6 +380,24 @@ Execute the script and your robot should plan and move to the goal you specify:
 ```
 ros2 run lab4 go_to_pose
 ```
+
+:::
+#### Exercise 3: Think how you would design your motion planer?
+:::
+
+A few points to consider:
+1. With the map (black being the obstacles and white being the free space) and 
+   the reference frame to which it associates, we have our configuration
+   space of the robot $\mathcal{C}$.
+2. Each pixel is assigned with a coordinate relative to the frame. The map is
+   essentially a discretization of a continuous space. Do we need such a high 
+   dimension space to search for the coordinate (or linear pose) to tackle a 
+   navigation task?
+3. Can we do some dimension reduction? Such as discretizing the free space by 
+   squares, then only search through patches; heuristics, and sampling based 
+   methods, potential field, etc. 
+
+
 
 ## Submission instructions
 
