@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>8. Lab 5: Computer Vision: Processing robot’s camera view &#8212; COMP3631 Website</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=605502e1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="_static/documentation_options.js?v=296c0a1b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab5';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="9. How to use the real-robot" href="using_the_real_robot.html" />
+    <link rel="prev" title="7. Lab 4: Mapping and Navigation" href="lab4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/comp3631-logo-large-title.png" class="logo__image only-light" alt="COMP3631 Website - Home"/>
+    <script>document.write(`<img src="_static/comp3631-logo-large-title.png" class="logo__image only-dark" alt="COMP3631 Website - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    COMP3631 Lab Worksheets
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="teaching-assistants.html">1. Teaching/Lab Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">2. Frequently Asked Questions (FAQ) and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">3. Lab 1.1: Setting up your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-optional.html">4. Lab 1.2: Learn about the command line interface and Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">5. Lab 2: Writing a Talker and Listener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">6. Lab 3: Actuating the turtlebot in simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">7. Lab 4: Mapping and Navigation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">8. Lab 5: Computer Vision: Processing robot’s camera view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_real_robot.html">9. How to use the real-robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">10. Lab 6: Real-robot lab</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 5: Computer Vision: Processing robot’s camera view</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">8.1. Worksheet Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">8.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-turtlebot-simulator-with-a-different-world-file">8.3. Starting Turtlebot Simulator with a different world file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-camera-feed-to-the-screen-and-convert-the-image-format">8.4. Display camera feed to the screen (and convert the image format)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opencv">8.4.1. OpenCV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-necessary-modules">8.4.2. Importing necessary modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subscribing-to-the-image-topic">8.4.3. Subscribing to the image topic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-between-opencv-and-ros-image-formats">8.4.4. Converting between openCV and ROS image formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-image-on-a-new-window">8.4.5. Displaying image on a new window</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-the-camera-feed-to-produce-new-images">8.5. Manipulating the camera feed to produce new images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.5.1. Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">8.6. Remarks and Checklist</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-5-computer-vision-processing-robot-s-camera-view">
+<h1><span class="section-number">8. </span>Lab 5: Computer Vision: Processing robot’s camera view<a class="headerlink" href="#lab-5-computer-vision-processing-robot-s-camera-view" title="Link to this heading">#</a></h1>
+<!-- **Worksheet Contact:** Andy Bulpitt (a.j.bulpitt@leeds.ac.uk) -->
+<p><strong>Worksheet Contact:</strong> Xiao Wang (<a class="reference external" href="mailto:x&#46;wang16&#37;&#52;&#48;leeds&#46;ac&#46;uk">x<span>&#46;</span>wang16<span>&#64;</span>leeds<span>&#46;</span>ac<span>&#46;</span>uk</a>)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This worksheet should be completed in Week 6 and labs in week 6 will provide support
+for this worksheet.</p>
+<p><strong>Access lab5 files - Instructions</strong></p>
+<p>To access the lab5 files, you need to click on this url
+<a class="reference external" href="https://classroom.github.com/a/rLKCMm-Z">classroom.github.com/a/rLKCMm-Z</a>,
+login to your
+GitHub account and click the button to accept the lab5 assignment.</p>
+<p>As always, before you start running any commands or code for this worksheet,
+make sure <a class="reference internal" href="lab1.html#singularity-command"><span class="std std-ref">you are in a Singularity environment</span></a>.</p>
+<p>Then execute the following commands:</p>
+<ul class="simple">
+<li><p>In a terminal, go to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws/src</span></code>.</p></li>
+<li><p>Run: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:COMP3631/lab5-YOUR_GITHUB_USERNAME</span> <span class="pre">lab5</span></code></p>
+<ul>
+<li><p>Note the ” lab5” at the end of the the command: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">[...]</span> <span class="pre">lab5</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME/ros2_ws</span></code> and then <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> to build the new package.</p></li>
+</ul>
+</div>
+<section id="worksheet-objective">
+<h2><span class="section-number">8.1. </span>Worksheet Objective<a class="headerlink" href="#worksheet-objective" title="Link to this heading">#</a></h2>
+<p>There are two aims to this worksheet: First to learn the basics of taking in data from the
+camera, processing it, and then making decisions based on it and second to learn how to perform image stitching.
+By the end of this session, you will:</p>
+<ul class="simple">
+<li><p>Be able to display the camera feed to the screen.</p></li>
+<li><p>Extract a specific colour from the image and only display this.</p></li>
+<li><p>Make decisions based on the colour detected (and possibly the size of the object).</p></li>
+<li><p>Move towards a specific colour object.</p></li>
+<li><p>Stop when another colour is detected.</p></li>
+<li><p>Be able to match features in images and use these to stitch images together.</p></li>
+</ul>
+</section>
+<section id="prerequisites">
+<h2><span class="section-number">8.2. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>Before you start working on this worksheet, make sure to do the following one-time
+configuration:</p>
+<ol class="arabic simple">
+<li><p>Open a terminal window and navigate to your workspace’s source directory:
+<code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws/src/turtlebot3_simulations</span></code>.</p></li>
+<li><p>Run: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> to receive some new files for this lab.</p></li>
+<li><p>Navigate to your workspace and rebuild: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws</span> <span class="pre">&amp;&amp;</span> <span class="pre">colcon</span> <span class="pre">build</span></code>.</p></li>
+<li><p>Remember to work in Code with the embedded terminals or run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> in the current terminal.</p></li>
+</ol>
+</section>
+<section id="starting-turtlebot-simulator-with-a-different-world-file">
+<h2><span class="section-number">8.3. </span>Starting Turtlebot Simulator with a different world file<a class="headerlink" href="#starting-turtlebot-simulator-with-a-different-world-file" title="Link to this heading">#</a></h2>
+<p>In this lab, we will load the simulated Turtlebot into a different environment.
+You will find the <code class="docutils literal notranslate"><span class="pre">rgb.world</span></code> file under <code class="docutils literal notranslate"><span class="pre">$HOME/ros2_ws/src/turtlebot3_simulations/turtlebot3_gazebo/worlds</span></code>.
+Now in a terminal, execute:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">turtlebot3_gazebo</span> <span class="n">turtlebot3_rgb_world</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>This command starts the simulator, as in the previous lab
+session. In the simulator environment, you should now see three spheres of red,
+green and blue colour. You can grab and move them around.</p>
+</section>
+<section id="display-camera-feed-to-the-screen-and-convert-the-image-format">
+<h2><span class="section-number">8.4. </span>Display camera feed to the screen (and convert the image format)<a class="headerlink" href="#display-camera-feed-to-the-screen-and-convert-the-image-format" title="Link to this heading">#</a></h2>
+<p>Now let’s focus on getting your python node capable of reading the camera data
+and then getting it to display to a screen. Open the file
+<code class="docutils literal notranslate"><span class="pre">Skeleton_Code_First_Step.py</span></code> in <code class="docutils literal notranslate"><span class="pre">lab5/lab5</span></code> and save a copy to <code class="docutils literal notranslate"><span class="pre">first_step.py</span></code>. When following the instructions below modify <code class="docutils literal notranslate"><span class="pre">first_step.py</span></code> so that the original code is still there for reference/backup if needed.</p>
+<section id="opencv">
+<h3><span class="section-number">8.4.1. </span>OpenCV<a class="headerlink" href="#opencv" title="Link to this heading">#</a></h3>
+<p>To process images and make decisions based on them we will be using a library
+called OpenCV (Computer Vision). Specifically, we will be using OpenCV2 so in
+any python scripts that you want to handle images you need to import cv2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="kn">import</span> <span class="nn">cv2</span> 
+</pre></div>
+</div>
+<p>Since we are handling ROS we also need the use of a library called
+<code class="docutils literal notranslate"><span class="pre">cv_bridge</span></code>, which can translate ROS images into images readable by OpenCV. (More
+info about <code class="docutils literal notranslate"><span class="pre">cv_bridge</span></code> is here: <a class="reference external" href="http://wiki.ros.org/cv_bridge/Tutorials">http://wiki.ros.org/cv_bridge/Tutorials</a>)</p>
+</section>
+<section id="importing-necessary-modules">
+<h3><span class="section-number">8.4.2. </span>Importing necessary modules<a class="headerlink" href="#importing-necessary-modules" title="Link to this heading">#</a></h3>
+<p>We always start by importing the necessary python modules and classes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">cv2</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">threading</span> 
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="linenos"> 4</span><span class="kn">import</span> <span class="nn">rclpy</span> 
+<span class="linenos"> 5</span><span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span> 
+<span class="linenos"> 6</span><span class="kn">from</span> <span class="nn">cv_bridge</span> <span class="kn">import</span> <span class="n">CvBridge</span><span class="p">,</span> <span class="n">CvBridgeError</span>
+<span class="linenos"> 7</span><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<span class="linenos"> 8</span><span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="linenos"> 9</span><span class="kn">from</span> <span class="nn">rclpy.exceptions</span> <span class="kn">import</span> <span class="n">ROSInterruptException</span>
+<span class="linenos">10</span><span class="kn">import</span> <span class="nn">signal</span>
+</pre></div>
+</div>
+</section>
+<section id="subscribing-to-the-image-topic">
+<h3><span class="section-number">8.4.3. </span>Subscribing to the image topic<a class="headerlink" href="#subscribing-to-the-image-topic" title="Link to this heading">#</a></h3>
+<p>In order to receive and process image data from the cameras we must create a
+subscriber to the topic that our camera outputs to. The RGB image from the 3D
+sensor is on the topic: <code class="docutils literal notranslate"><span class="pre">camera/image_raw</span></code>. Create a subscriber for this
+topic in the constructor (<code class="docutils literal notranslate"><span class="pre">__init__</span></code>) of the <code class="docutils literal notranslate"><span class="pre">colourIdentifier</span></code> class, and specify
+the callback function of the <code class="docutils literal notranslate"><span class="pre">colourIdentifier</span></code> class as the callback of the
+image topic.</p>
+</section>
+<section id="converting-between-opencv-and-ros-image-formats">
+<h3><span class="section-number">8.4.4. </span>Converting between openCV and ROS image formats<a class="headerlink" href="#converting-between-opencv-and-ros-image-formats" title="Link to this heading">#</a></h3>
+<p>The image from the camera arrives in the ROS type Image. To manipulate it in
+OpenCV, we must convert he image from the ROS format of Image into an OpenCV
+image. OpenCV has built in functions to do this for us. Call the
+function <code class="docutils literal notranslate"><span class="pre">imgmsg_to_cv2(data,</span> <span class="pre">&quot;bgr8&quot;)</span></code> on a <code class="docutils literal notranslate"><span class="pre">CvBridge</span></code> object you have created in
+your class. Finally, output the camera feed to the window on your screen.</p>
+</section>
+<section id="displaying-image-on-a-new-window">
+<h3><span class="section-number">8.4.5. </span>Displaying image on a new window<a class="headerlink" href="#displaying-image-on-a-new-window" title="Link to this heading">#</a></h3>
+<p>We declare that we want to have a named window called ‘camera feed’ and then we
+show it. As the camera resolution is very high we need to resize the window to ensure it fits on the screen.
+This is very important if you are using feng-linux.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">&#39;camera_Feed&#39;</span><span class="p">,</span><span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span> 
+<span class="linenos">2</span><span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;camera_Feed&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">image</span> <span class="n">name</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="linenos">3</span><span class="n">cv2</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="s1">&#39;camera_Feed&#39;</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span> 
+<span class="linenos">4</span><span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>Try to build and run your script <code class="docutils literal notranslate"><span class="pre">first_step.py</span></code> and see if it works using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span> <span class="n">build</span>
+<span class="n">ros2</span> <span class="n">run</span> <span class="n">lab5</span> <span class="n">first_step</span>
+</pre></div>
+</div>
+<p>If you only wish to build a single package you can use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">colcon</span> <span class="n">build</span> <span class="o">--</span><span class="n">packages</span><span class="o">-</span><span class="n">select</span> <span class="n">lab5</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manipulating-the-camera-feed-to-produce-new-images">
+<h2><span class="section-number">8.5. </span>Manipulating the camera feed to produce new images<a class="headerlink" href="#manipulating-the-camera-feed-to-produce-new-images" title="Link to this heading">#</a></h2>
+<p>Next, we’re going to look at manipulating our image to isolate all parts of a
+certain colour. Isolating and detecting colours from each other is a very
+useful tool for robot computer vision.</p>
+<p>Notice that when we converted the ROS image into an OpenCV image
+that “bgr8” was given as an argument. This is the original colourspace of the
+camera feed. This is usually the default colour space of camera images. RGB colour space is
+not convenient in terms of image processing. Because the hue, value and intensity are mixed,
+which means if you change the pixel values in any channel of an RGB image, these three components
+change at the same time. For each channel, the pixel value is <code class="docutils literal notranslate"><span class="pre">0~255</span></code>, therefore in RGB you have
+<span class="math notranslate nohighlight">\(255^3 = 16581375\)</span>. This is the source of the hype when you buy an RGB gaming gear with the claimed 16
+million colour choices! In a lot of image processing cases, we are really dealing with only the
+hue. Therefore, HSV (hue, saturation, value) or HSI(hue, saturation, intensity) colour space is
+used. For colour manipulation, we are only working with the Hue channel instead of working with all
+three channel in RGB colourspace. If you are interested in the conversion, search online for the math.
+OpenCV provides methods for converting from one colourspace to another. This can be done by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">hsv_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2HSV</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once we have converted the image, what colour we need to select.
+In the example below, we are selecting the green colour, which is centred at 60. When we are talking
+about colours, we are usually referring to a band of wavelengthes rather than a single wavelength.
+By giving it a range, we allow more robustness of detecting green colours. Our perception of colours
+varies slightly from person to person because of psychophysiological reasions. Then using a range of
+hue values to define a colour makes sense. To further widen the green colour detection, we also set a
+range for the saturation (less green to greener) and value (less bright to brighter):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>hsv_green_lower = np.array([60 – self.sensitivity, 100, 100])
+hsv_green_upper = np.array([60 + self.sensitivity, 255, 255])
+</pre></div>
+</div>
+<p>As a parameter, self.sensitivity can be initialized in <code class="docutils literal notranslate"><span class="pre">__init__</span></code>.</p>
+<p>Please note that looking up the Hue for HSV online you will find it is in the
+range of 0-360, however for processing in OpenCV it is set from 0-180 instead.
+Therefore, the following values will be useful to note for using HSV in OpenCV;
+Red will be around <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(180\)</span>, green will be <span class="math notranslate nohighlight">\(\approx 60\)</span> and blue will be
+<span class="math notranslate nohighlight">\(\approx 120\)</span>. Since the red is at the ends of the spectrum, you will need to
+define two ranges, i.e. <code class="docutils literal notranslate"><span class="pre">0~sensitity</span></code> and <code class="docutils literal notranslate"><span class="pre">180-sensivity</span> <span class="pre">~</span> <span class="pre">180</span></code>.</p>
+<p>Then we want to create a mask image filtering out anything that isn’t within
+those three colours. The <code class="docutils literal notranslate"><span class="pre">inRange</span></code> method will return a binary image with the
+same height and width as the camera image. But with 1 as pixel values at locations
+where the colour falls inside your specified range, and 0 pixel values otherwise:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">green_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv_image</span><span class="p">,</span> <span class="n">hsv_green_lower</span><span class="p">,</span> <span class="n">hsv_green_upper</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then to select all three colours. We can combine the masks togather as following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rg_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_or</span><span class="p">(</span><span class="n">red_mask</span><span class="p">,</span> <span class="n">blue_mask</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Because it only takes two masks at the same time, you need to do it again using the
+<code class="docutils literal notranslate"><span class="pre">rg_mask</span></code> with <code class="docutils literal notranslate"><span class="pre">blue_mask</span></code> to incorporate the blue colour. In the excercise later, you
+can play around and show the indivdually filtered colour images onto the screen with one window for
+each.</p>
+<p>Finally, you can get the filtered image of the robot’s camera feed by applying
+the combined mask to the camera feed (rgb image) and display:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">image</span><span class="p">,</span> <span class="n">mask</span><span class="o">=&lt;</span><span class="n">YOUR</span> <span class="n">MUSK</span><span class="o">&gt;</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">namedWindow</span><span class="p">(</span><span class="s1">&#39;camera_feed&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">WINDOW_NORMAL</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="s1">&#39;camera_Feed&#39;</span><span class="p">,</span> <span class="n">filtered_img</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">resizeWindow</span><span class="p">(</span><span class="s1">&#39;camera_feed&#39;</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">240</span><span class="p">)</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">waitKey</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="exercises">
+<h3><span class="section-number">8.5.1. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://docs.opencv.org/4.7.0/">Here</a> is a link to the OpenCV documentation
+which you will find useful for this lab worksheet and the project.</p>
+</div>
+<p>For each exercise below we recommend you copy the Skeleton code to the file suggested before editing it.
+To move the robot around the world you can use the teleop_keyboard package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">turtlebot3_teleop</span> <span class="n">teleop_keyboard</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>Try completing the skeleton code <code class="docutils literal notranslate"><span class="pre">first_step.py</span></code> to filter out all colours apart from one in
+an image to start with, for example green.</p></li>
+<li><p>Create a file <code class="docutils literal notranslate"><span class="pre">second_step.py</span></code> from <code class="docutils literal notranslate"><span class="pre">Skeleton_Code_Second_Step.py</span></code>.
+Try adding a second and third colour (red and blue) to ones you want to
+isolate from the initial image and produce an image similar to the output in the previous example.</p></li>
+<li><p>In addition to colour, you can also use methods to tell if you are going away or coming closer to a target but counting the number of pixels inside a contour. You can extract contours from the mask image (binary image).</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">contours</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">findContours</span><span class="p">(</span><span class="n">green_image</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">RETR_TREE</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">cv2</span><span class="o">.</span><span class="n">CHAIN_APPROX_SIMPLE</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you can may find the largest contour by: <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">max(contours,</span> <span class="pre">key=cv2.contourArea)</span></code>. In addition, you may use other handy functions that OpenCV provides, such as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cv2</span><span class="o">.</span><span class="n">minEnclosingCircle</span><span class="p">()</span> 
+<span class="n">cv2</span><span class="o">.</span><span class="n">boundingRect</span><span class="p">()</span> <span class="c1"># draw a bounding rectangle to contour</span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">rectangle</span><span class="p">()</span> <span class="c1"># draw a rectangle </span>
+<span class="n">cv2</span><span class="o">.</span><span class="n">circle</span><span class="p">()</span> <span class="c1"># draw circle</span>
+</pre></div>
+</div>
+<p>Please refer to the OpenCV API for more information. Create a file <code class="docutils literal notranslate"><span class="pre">third_step.py</span></code> from <code class="docutils literal notranslate"><span class="pre">Skeleton_Code_Third_Step.py</span></code> and complete the
+skeleton code to send messages based on what colours
+are present in the image view. You can define a flag in the constructor, such as <code class="docutils literal notranslate"><span class="pre">self.green_found</span> <span class="pre">=</span> <span class="pre">false</span></code>. Follow the comments. You could print when the
+colour is detected or send the message to the lab2 talker/listener.
+4. Now that you have the flags based on a colour being present, try creating
+one further node (<code class="docutils literal notranslate"><span class="pre">fourth_step.py</span></code>) that can instruct the robot to follow a particular colour,
+stopping when it catches sight of another colour. Choose two colours – for
+example follow green but stop if red is detected. You can include the
+publisher for the movements from lab3, then instruct to move depending on
+if the colour is detected, if it’s over a certain size, move towards the
+object. If the second colour is detected then stop. The skeleton code can be found in <code class="docutils literal notranslate"><span class="pre">Skeleton_Code_Fourth_Step.py</span></code>.</p>
+</section>
+</section>
+<section id="remarks-and-checklist">
+<h2><span class="section-number">8.6. </span>Remarks and Checklist<a class="headerlink" href="#remarks-and-checklist" title="Link to this heading">#</a></h2>
+<p>Please check, by the end of this worksheet, that …</p>
+<ul class="simple">
+<li><p>You understand how to run Gazebo simulator with different world file.</p></li>
+<li><p>You can see the robot’s camera view using a Python code.</p></li>
+<li><p>You can process the camera feed to produce new images.</p></li>
+<li><p>You completed successfully all exercises.</p></li>
+<li><p>You pushed your code to GitHub.</p></li>
+</ul>
+<p>If you have any questions or problems, please kindly ask one of the Teaching team
+for the module for help during the lab hours, or post a message on the Teams group.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>Lab 4: Mapping and Navigation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="using_the_real_robot.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>How to use the real-robot</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">8.1. Worksheet Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">8.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#starting-turtlebot-simulator-with-a-different-world-file">8.3. Starting Turtlebot Simulator with a different world file</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#display-camera-feed-to-the-screen-and-convert-the-image-format">8.4. Display camera feed to the screen (and convert the image format)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opencv">8.4.1. OpenCV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-necessary-modules">8.4.2. Importing necessary modules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subscribing-to-the-image-topic">8.4.3. Subscribing to the image topic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-between-opencv-and-ros-image-formats">8.4.4. Converting between openCV and ROS image formats</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#displaying-image-on-a-new-window">8.4.5. Displaying image on a new window</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manipulating-the-camera-feed-to-produce-new-images">8.5. Manipulating the camera feed to produce new images</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">8.5.1. Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">8.6. Remarks and Checklist</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yanlong Huang, Andy Bulpitt, Xiao Wang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Yanlong Huang, Andy Bulpitt, Xiao Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
