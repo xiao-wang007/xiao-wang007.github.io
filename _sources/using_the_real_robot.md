@@ -1,11 +1,6 @@
 # How to use the real-robot
 
-**Contact:** Rafael Papallas (r.papallas@leeds.ac.uk)
-
-```{note}
-Access to the robots will be provided on a request-basis at the lab hours
-throughout the week. These are Tuesdays and Thursdays 11-1pm.
-```
+**Contact:** Xiao Wang (x.wang16@leeds.ac.uk)
 
 ## Turn on the robot
 

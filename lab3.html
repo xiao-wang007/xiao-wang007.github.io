@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>6. Lab 3: Actuating the turtlebot in simulation &#8212; COMP3631 Website</title>
+    <title>7. Lab 3: Actuating the turtlebot in simulation &#8212; COMP3631 Website</title>
   
   
   
@@ -46,8 +46,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'lab3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="7. Lab 4: Mapping and Navigation" href="lab4.html" />
-    <link rel="prev" title="5. Lab 2: Writing a Talker and Listener" href="lab2.html" />
+    <link rel="next" title="8. Lab 4: Mapping and Navigation" href="lab4.html" />
+    <link rel="prev" title="6. Lab 2: Writing a Talker and Listener" href="lab2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,16 +169,17 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="teaching-assistants.html">1. Teaching/Lab Assistants</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">2. Frequently Asked Questions (FAQ) and Troubleshooting</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab1.html">3. Lab 1.1: Setting up your environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab1-optional.html">4. Lab 1.2: Learn about the command line interface and Git/GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab2.html">5. Lab 2: Writing a Talker and Listener</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">6. Lab 3: Actuating the turtlebot in simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab4.html">7. Lab 4: Mapping and Navigation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab5.html">8. Lab 5: Computer Vision: Processing robot’s camera view</a></li>
-<li class="toctree-l1"><a class="reference internal" href="using_the_real_robot.html">9. How to use the real-robot</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lab6.html">10. Lab 6: Real-robot lab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teaching-assistants.html">2. Teaching/Lab Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions (FAQ) and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">4. Lab 1.1: Setting up your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-optional.html">5. Lab 1.2: Learn about the command line interface and Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">6. Lab 2: Writing a Talker and Listener</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">7. Lab 3: Actuating the turtlebot in simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">8. Lab 4: Mapping and Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">9. Lab 5: Computer Vision: Processing robot’s camera view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_real_robot.html">10. How to use the real-robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">11. Lab 6: Real-robot lab</a></li>
 </ul>
 
     </div>
@@ -279,14 +280,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">6.1. Worksheet Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">6.2. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gazebo">6.3. Start Gazebo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtlebot-ros-nodes-and-topics">6.4. Turtlebot ROS nodes and topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-velocity-topic">6.5. Understanding the velocity topic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-firstwalk-program-moving-forward-and-backwards">6.6. The firstwalk program: moving forward and backwards</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">6.8. Remarks and Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">7.1. Worksheet Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">7.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gazebo">7.3. Start Gazebo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtlebot-ros-nodes-and-topics">7.4. Turtlebot ROS nodes and topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-velocity-topic">7.5. Understanding the velocity topic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-firstwalk-program-moving-forward-and-backwards">7.6. The firstwalk program: moving forward and backwards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">7.8. Remarks and Checklist</a></li>
 </ul>
             </nav>
         </div>
@@ -299,7 +300,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lab-3-actuating-the-turtlebot-in-simulation">
-<h1><span class="section-number">6. </span>Lab 3: Actuating the turtlebot in simulation<a class="headerlink" href="#lab-3-actuating-the-turtlebot-in-simulation" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">7. </span>Lab 3: Actuating the turtlebot in simulation<a class="headerlink" href="#lab-3-actuating-the-turtlebot-in-simulation" title="Link to this heading">#</a></h1>
 <!-- **Worksheet Contact:** Rafael Papallas (r.papallas@leeds.ac.uk) -->
 <p><strong>Worksheet Contact:</strong> Xiao Wang (<a class="reference external" href="mailto:x&#46;wang16&#37;&#52;&#48;leeds&#46;ac&#46;uk">x<span>&#46;</span>wang16<span>&#64;</span>leeds<span>&#46;</span>ac<span>&#46;</span>uk</a>)</p>
 <p>Please aim to complete this worksheet during week 4. The labs scheduled in week
@@ -325,14 +326,14 @@ make sure <a class="reference internal" href="lab1.html#singularity-command"><sp
 </ul>
 </div>
 <section id="worksheet-objective">
-<h2><span class="section-number">6.1. </span>Worksheet Objective<a class="headerlink" href="#worksheet-objective" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.1. </span>Worksheet Objective<a class="headerlink" href="#worksheet-objective" title="Link to this heading">#</a></h2>
 <p>The objective of this worksheet is to help you understand how to control the
 robot and how to use it in a simulator. You will expand upon the concepts
 learned in lab 2 and implement the publishing-subscribing pattern to give
 commands to the robot.</p>
 </section>
 <section id="prerequisites">
-<h2><span class="section-number">6.2. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.2. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>Before you start working on this worksheet, make sure to do the following one-time
 configuration:</p>
 <ol class="arabic simple">
@@ -377,7 +378,7 @@ typename boost::detail::sp_member_access&lt;T&gt;::type = gazebo::rendering::Cam
 </div>
 </section>
 <section id="start-gazebo">
-<h2><span class="section-number">6.3. </span>Start Gazebo<a class="headerlink" href="#start-gazebo" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.3. </span>Start Gazebo<a class="headerlink" href="#start-gazebo" title="Link to this heading">#</a></h2>
 <p>Gazebo is a simulator, making it an ideal platform for programming a
 simulated turtlebot. Starting in simulation offers several advantages,
 including convenience and safety for experimentation. After successfully
@@ -416,7 +417,7 @@ drag and reposition it. This mode lets you move objects, including the robot,
 as if they were any other item in the world.</p>
 </section>
 <section id="turtlebot-ros-nodes-and-topics">
-<h2><span class="section-number">6.4. </span>Turtlebot ROS nodes and topics<a class="headerlink" href="#turtlebot-ros-nodes-and-topics" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.4. </span>Turtlebot ROS nodes and topics<a class="headerlink" href="#turtlebot-ros-nodes-and-topics" title="Link to this heading">#</a></h2>
 <p>In the Gazebo environment, various ROS nodes run in the background, providing
 fundamental functionalities for the Turtlebot. These include the controller for
 the TurtleBot’s mobile base, drivers for its sensors, and more. If you wish to
@@ -438,7 +439,7 @@ velocity commands to control the mobile base of the robot. It will be an
 important topic in our activities today.</p>
 </section>
 <section id="understanding-the-velocity-topic">
-<h2><span class="section-number">6.5. </span>Understanding the velocity topic<a class="headerlink" href="#understanding-the-velocity-topic" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.5. </span>Understanding the velocity topic<a class="headerlink" href="#understanding-the-velocity-topic" title="Link to this heading">#</a></h2>
 <p>To see the publishers and subscribers to the topic, run:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">topic</span> <span class="n">info</span> <span class="o">/</span><span class="n">cmd_vel</span>
 </pre></div>
@@ -459,7 +460,7 @@ values. Notice that one of the <code class="docutils literal notranslate"><span 
 linear and angular velocities in three dimensions.</p>
 </section>
 <section id="the-firstwalk-program-moving-forward-and-backwards">
-<h2><span class="section-number">6.6. </span>The firstwalk program: moving forward and backwards<a class="headerlink" href="#the-firstwalk-program-moving-forward-and-backwards" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.6. </span>The firstwalk program: moving forward and backwards<a class="headerlink" href="#the-firstwalk-program-moving-forward-and-backwards" title="Link to this heading">#</a></h2>
 <p>You will find the file <code class="docutils literal notranslate"><span class="pre">firstwalk.py</span></code> in <code class="docutils literal notranslate"><span class="pre">lab3</span></code> directory. This program
 moves the robot back and forth in an infinite loop.
 While Gazebo is running, run this script in a separate terminal window,
@@ -598,7 +599,7 @@ loops in ROS. We utilise <code class="docutils literal notranslate"><span class=
 before executing our ROS commands, such as <code class="docutils literal notranslate"><span class="pre">walk_forward</span></code> and <code class="docutils literal notranslate"><span class="pre">walk_backward</span></code>.</p>
 </section>
 <section id="exercises">
-<h2><span class="section-number">6.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.7. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <p>The turtlebot is capable of moving forward, backward, turning left and right. However,
 it cannot go sideways. In mobile robots, its type is called the differential drive robot.
 In robotic motion planning, this means there are non-holonomical constraints to its motion.
@@ -741,7 +742,7 @@ Don’t forget to update <code class="docutils literal notranslate"><span class=
 <p>where <code class="docutils literal notranslate"><span class="pre">YOUR_TARGET_NAME</span></code> is the name you assigned to the script in <code class="docutils literal notranslate"><span class="pre">setup.py</span></code>.</p>
 </section>
 <section id="remarks-and-checklist">
-<h2><span class="section-number">6.8. </span>Remarks and Checklist<a class="headerlink" href="#remarks-and-checklist" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">7.8. </span>Remarks and Checklist<a class="headerlink" href="#remarks-and-checklist" title="Link to this heading">#</a></h2>
 <p>This worksheet covers various key aspects. Initially, you were introduced to
 the Gazebo simulator. You explored the
 <code class="docutils literal notranslate"><span class="pre">cmd_vel</span></code> topic for publishing a <code class="docutils literal notranslate"><span class="pre">Twist</span></code> to control the robot. You gained the
@@ -774,7 +775,7 @@ and square tracing.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">5. </span>Lab 2: Writing a Talker and Listener</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Lab 2: Writing a Talker and Listener</p>
       </div>
     </a>
     <a class="right-next"
@@ -782,7 +783,7 @@ and square tracing.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Lab 4: Mapping and Navigation</p>
+        <p class="prev-next-title"><span class="section-number">8. </span>Lab 4: Mapping and Navigation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -802,14 +803,14 @@ and square tracing.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">6.1. Worksheet Objective</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">6.2. Prerequisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gazebo">6.3. Start Gazebo</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtlebot-ros-nodes-and-topics">6.4. Turtlebot ROS nodes and topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-velocity-topic">6.5. Understanding the velocity topic</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-firstwalk-program-moving-forward-and-backwards">6.6. The firstwalk program: moving forward and backwards</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">6.7. Exercises</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">6.8. Remarks and Checklist</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">7.1. Worksheet Objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">7.2. Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-gazebo">7.3. Start Gazebo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtlebot-ros-nodes-and-topics">7.4. Turtlebot ROS nodes and topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-velocity-topic">7.5. Understanding the velocity topic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-firstwalk-program-moving-forward-and-backwards">7.6. The firstwalk program: moving forward and backwards</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">7.7. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">7.8. Remarks and Checklist</a></li>
 </ul>
   </nav></div>
 

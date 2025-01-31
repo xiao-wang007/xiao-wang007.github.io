@@ -18,9 +18,9 @@ no more than that.
 
 ```{note}
 
-You can access the robots for your group project starting from Week 7 onwards.
-Access to the robots will be provided upon request during lab hours throughout
-the weeks. These hours are Tuesdays and Thursdays from 11am to 1pm.
+You can access the robots to play with what you learnt from the labs, or test the modules for 
+your project starting from Week 7 onwards. Access to the robots will be provided upon request
+ during lab hours. 
 
 ```
 
@@ -234,11 +234,7 @@ they work and that you know how to generate a map.
 Please check, by the end of this worksheet, that **all members** of the group ...
 
 - Understand how to use the real-robot.
-- You know how to send velocities to the robot.
-- You know how to utilise the camera with OpenCV.
-- Understand how to run code on the real robot (i.e., you only run `robot.launch.py` on
+- you know how to send velocities to the robot.
+- you know how to utilise the camera with OpenCV.
+- understand how to run code on the real robot (i.e., you only run `robot.launch.py` on
   the real-robot, you can run the rest on the desktop PC).
-
-If you have any questions or problems, please kindly ask one of the Teaching
-Assistants of the module for help during the lab hours, or send me an email at
-r.papallas@leeds.ac.uk.

@@ -5,6 +5,7 @@ COMP3631 Lab Worksheets
     :numbered:
     :maxdepth: 1
 
+    overview.md
     teaching-assistants.md
     faq.md
     lab1.md
