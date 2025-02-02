@@ -1,0 +1,726 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Lab 1.1: Setting up your environment &#8212; COMP3631 Website</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=605502e1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="_static/documentation_options.js?v=296c0a1b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab1';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5. Lab 1.2: Learn about the command line interface and Git/GitHub" href="lab1-optional.html" />
+    <link rel="prev" title="3. Frequently Asked Questions (FAQ) and Troubleshooting" href="faq.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/comp3631-logo-large-title.png" class="logo__image only-light" alt="COMP3631 Website - Home"/>
+    <script>document.write(`<img src="_static/comp3631-logo-large-title.png" class="logo__image only-dark" alt="COMP3631 Website - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    COMP3631 Lab Worksheets
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teaching-assistants.html">2. Teaching/Lab Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions (FAQ) and Troubleshooting</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">4. Lab 1.1: Setting up your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-optional.html">5. Lab 1.2: Learn about the command line interface and Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">6. Lab 2: Writing a Talker and Listener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">7. Lab 3: Actuating the turtlebot in simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">8. Lab 4: Mapping and Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">9. Lab 5: Computer Vision: Processing robot’s camera view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_real_robot.html">10. How to use the real-robot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">11. Lab 6: Real-robot lab</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 1.1: Setting up your environment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">4.1. Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity">4.2. Singularity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-visual-studio-code-properly-for-this-module">4.3. Using Visual Studio Code properly for this module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-ros-environment">4.4. Setting up your ROS environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">4.5. Remarks and Checklist</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-1-1-setting-up-your-environment">
+<h1><span class="section-number">4. </span>Lab 1.1: Setting up your environment<a class="headerlink" href="#lab-1-1-setting-up-your-environment" title="Link to this heading">#</a></h1>
+<!-- **Worksheet Contact:** Rafael Papallas (r.papallas@leeds.ac.uk) -->
+<p><strong>Worksheet Contact:</strong> Xiao Wang (<a class="reference external" href="mailto:x&#46;wang16&#37;&#52;&#48;leeds&#46;ac&#46;uk">x<span>&#46;</span>wang16<span>&#64;</span>leeds<span>&#46;</span>ac<span>&#46;</span>uk</a>)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This lab worksheet is <strong>essential</strong> for the module. We will be introducing
+ROS2 today, which is the up-to-date version of the robot operating system. ROS
+in general is like an eco-system for robotics related stuff, such as simulation,
+SLAM, navigation, control, hardware etc. It is widely used both in academia and
+the industry.</p>
+</div>
+<p>Please aim to complete this worksheet during week 2. The labs scheduled will offer
+support and guidance for this worksheet. This worksheet is <strong>formative</strong>, which
+means you are not required to submit any work, and it will not be graded. However,
+the labs will help you complete your ROS project in this module, which accounts
+for <span class="math notranslate nohighlight">\(\boldsymbol{10\%}\)</span> <em><strong>of your grade</strong></em>.</p>
+<div class="docutils">
+<h4 class="rubric" id="should-i-complete-the-supplementary-worksheet-lab-1-2">Should I complete the <a class="reference internal" href="lab1-optional.html"><span class="std std-doc">Supplementary Worksheet Lab 1.2</span></a>?</h4>
+</div>
+<p>Note that for Lab 1, we also have a supplementary worksheet
+<a class="reference internal" href="lab1-optional.html"><span class="std std-doc">here</span></a>. This supplementary worksheet 1.2, introduces you to
+the command line interface (terminal), Git and GitHub.</p>
+<p>If this is your first time using these tools, or you don’t have extensive
+experience with using the command line, please complete the supplementary
+worksheet <strong>first</strong>. This supplementary worksheet is a prerequisite for lab 1.1
+and very important for the rest of the module (including the group project).</p>
+<p>If you are familiar with these tools, you can skip the supplementary worksheet
+1.2, and proceed with Lab 1.1. Everyone should complete the worksheet 1.1.</p>
+<section id="aim">
+<h2><span class="section-number">4.1. </span>Aim<a class="headerlink" href="#aim" title="Link to this heading">#</a></h2>
+<p>This worksheet serves as an introduction to ROS and Singularity. The worksheet
+will also walk you through configuring your Linux account for seamless
+interaction with this module. Everything in this worksheet is <strong>essential</strong> for
+you to complete and you need to set up your Linux account for this module.</p>
+</section>
+<section id="singularity">
+<span id="singularity-sec"></span><h2><span class="section-number">4.2. </span>Singularity<a class="headerlink" href="#singularity" title="Link to this heading">#</a></h2>
+<p>The module relies on the use of this software to run code. Please read through
+this section carefully.</p>
+<div class="docutils">
+<h4 class="rubric" id="what-s-singularity">What’s Singularity</h4>
+</div>
+<p>Singularity is a containerisation platform, a form of
+operating-system-level virtualisation. These tools enable you to execute
+programs within isolated virtual operating system instances known as
+containers. The key advantage is that you can preconfigure these operating
+system environments to include specific software versions and dependencies,
+allowing you to run them on any host operating system that supports
+Singularity.</p>
+<p>Consider a scenario where you need to run a program that relies on Ubuntu
+18.04, but your host operating system is running Ubuntu 22.04. Perhaps you have two
+programs that must run simultaneously on the same computer, each with distinct
+operating system versions and software dependencies. In such cases,
+containerisation provides an effective solution, enabling you to create and
+manage separate, self-contained environments tailored to the requirements of
+each application.</p>
+<div class="docutils">
+<h4 class="rubric" id="why-we-need-singularity">Why we need Singularity</h4>
+</div>
+<p>The tools we need for this module, such as ROS, mandate a specific
+version of Ubuntu that is not supported on the university computers.
+Consequently, we have devised a solution to deliver all these necessary tools
+to you via a container. Within this container, you will operate within an
+Ubuntu 22.04 environment, pre-installed with all the required tools for
+this module.</p>
+<p>If you happen to have a computer running a Linux-based operating system, you
+have the option to install Singularity and download the container image
+directly onto your computer. This approach eliminates the need for any
+additional modifications on your computer, enabling you to seamlessly run the
+code and exercises associated with this module on your machine. If you want
+to download the Singularity image on your computer, please read
+<a class="reference internal" href="faq.html#download-singularity"><span class="std std-ref">this section of the FAQ page</span></a>.</p>
+<div class="docutils">
+<h4 class="rubric" id="how-to-use-singularity-to-work-in-this-module">How to use Singularity to work in this module</h4>
+</div>
+<p>To enter the Singularity environment for this module you need to run the following
+command in your terminal:</p>
+<div class="highlight-default notranslate" id="singularity-command"><div class="highlight"><pre><span></span>singularity shell --nv --bind=/run/user/$UID --bind=/etc/localtime /vol/scratch/SoC/COMP3631/comp3631.simg
+</pre></div>
+</div>
+<p>Note the difference before and after running the command.  Note the
+<code class="docutils literal notranslate"><span class="pre">[COMP3631]</span> <span class="pre">Singularity&gt;</span></code> prompt which indicates that you are now in singularity.</p>
+<p>To get out of the container, hit <code class="docutils literal notranslate"><span class="pre">CTRL+D</span></code>. Observe that the prompt now is
+not <code class="docutils literal notranslate"><span class="pre">[COMP3631]</span> <span class="pre">Singularity&gt;</span></code> (try it now).</p>
+<div class="docutils">
+<h4 class="rubric" id="a-shortcut-to-start-singularity">A shortcut to start singularity</h4>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file below is a special file located in your home folder that
+includes bash/shell commands (like <code class="docutils literal notranslate"><span class="pre">cp</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, declaring variables etc) that
+will get executed every time a new terminal sessions starts. So, when you want
+to run commands every time you open a terminal, you can include those commands
+in your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file.</p>
+</div>
+<p>This is a lengthy command, however, and you will need it often; let’s create a shortcut.
+Open your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file (<code class="docutils literal notranslate"><span class="pre">gedit</span> <span class="pre">~/.bashrc</span></code>), and append the following lines
+at the end of the file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">unset</span><span class="w"> </span>SESSION_MANAGER
+
+<span class="nb">alias</span><span class="w"> </span><span class="nv">ros</span><span class="o">=</span><span class="s2">&quot;singularity shell </span><span class="k">$(</span>nvidia-smi<span class="w"> </span><span class="p">&amp;</span>&gt;<span class="w"> </span>/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;--nv&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="k">)</span><span class="s2"> -B /run/user/</span><span class="nv">$UID</span><span class="s2"> -B /etc/localtime /vol/scratch/SoC/COMP3631/comp3631.simg&quot;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/opt/ros/humble/<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">    </span><span class="nv">PS1</span><span class="o">=</span><span class="s2">&quot;[COMP3631] Singularity&gt; \w \$ &quot;</span>
+
+<span class="w">    </span><span class="nb">source</span><span class="w"> </span>/opt/ros/humble/setup.bash
+<span class="w">    </span>.<span class="w"> </span>/usr/share/gazebo/setup.sh
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span><span class="nv">$HOME</span>/ros2_ws/install/<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/ros2_ws/install/setup.bash
+<span class="w">    </span><span class="k">fi</span>
+
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_DOMAIN_ID</span><span class="o">=</span><span class="m">30</span><span class="w"> </span><span class="c1">#TURTLEBOT3</span>
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">TURTLEBOT3_MODEL</span><span class="o">=</span>burger
+<span class="w">    </span><span class="nb">export</span><span class="w"> </span><span class="nv">ROS_LOCALHOST_ONLY</span><span class="o">=</span><span class="m">1</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Save the file and close it. In the terminal run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">~/.bashrc</span></code> to apply
+the changes to the current session. The <code class="docutils literal notranslate"><span class="pre">alias</span></code> line creates a named shortcut to a
+longer command; running <code class="docutils literal notranslate"><span class="pre">ros</span></code> now will execute the lengthy singularity command
+provided. The rest of the code is required for the future lab worksheets.</p>
+<p>Type <code class="docutils literal notranslate"><span class="pre">ros</span></code> and hit enter now. Does
+Singularity work again? If so, that’s great, use <code class="docutils literal notranslate"><span class="pre">ros</span></code> to enter Singularity
+henceforth.</p>
+<p>Always make sure that your terminal includes the <code class="docutils literal notranslate"><span class="pre">[COMP3631]</span> <span class="pre">Singularity&gt;</span></code> prompt,
+otherwise ROS won’t be available.</p>
+</section>
+<section id="using-visual-studio-code-properly-for-this-module">
+<h2><span class="section-number">4.3. </span>Using Visual Studio Code properly for this module<a class="headerlink" href="#using-visual-studio-code-properly-for-this-module" title="Link to this heading">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the following section, we will guide you through the proper configuration of
+VS Code for Python programming. If you intend to use your own text editor, we
+strongly advise ensuring that your chosen editor has the capability to convert
+tab characters into spaces. This is a common issue when using
+certain text editors. Fortunately, most editors offer settings that allow you
+to automatically convert tabs into spaces.</p>
+</div>
+<div class="docutils">
+<h4 class="rubric" id="the-proper-way-to-open-vs-code-for-this-module-to-benefit-from-ros-auto-completion">The proper way to open VS Code for this module to benefit from ROS auto-completion</h4>
+</div>
+<p>While Visual Studio Code exists as a software outside the Singularity container,
+we installed VS Code in the container to help you access IntelliSense and
+embedded terminal windows. What this means is that, if you open VS Code from
+within the container, VS Code will be able to provide “suggestions” and “auto completion”
+for ROS related commands. On top of that, you could start new terminal sessions
+from within VS Code, and those terminal windows would be within the singularity container
+(i.e., you won’t need to run the singularity command more than once if you work in
+terminals in VS Code).</p>
+<p>Opening visual studio code this way requires that you are in a container and
+simply running: <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">&amp;</span></code> the ampersand makes sure to run the command in the
+background so your shell isn’t blocked.</p>
+<p>So for this module, whenever you log in to a Linux computer do the following:</p>
+<ol class="arabic simple">
+<li><p>Open a terminal window.</p></li>
+<li><p>Enter into the Singularity container by running: <code class="docutils literal notranslate"><span class="pre">ros</span></code> (this is an <em>alias</em> we set up earlier). Make
+sure you can see the <code class="docutils literal notranslate"><span class="pre">[COMP3631]</span> <span class="pre">Singularity&gt;</span></code> prompt.</p></li>
+<li><p>Open VS Code from there using: <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">&amp;</span></code>.</p></li>
+</ol>
+<div class="docutils">
+<h4 class="rubric" id="install-python-extensions">Install Python extensions</h4>
+</div>
+<p>Now that VS Code is working, let’s install three essential extensions for Python
+programming:</p>
+<figure class="align-default" id="code-python">
+<img alt="Install Python extension" src="_images/code-install-python.png" />
+</figure>
+<figure class="align-default" id="code-python-indent">
+<img alt="Install Python Indent extension" src="_images/code-install-python-indent.png" />
+</figure>
+<figure class="align-default" id="code-ros">
+<img alt="Install ROS extension" src="_images/code-ros.png" />
+</figure>
+<div class="docutils">
+<h4 class="rubric" id="opening-singularity-terminal-windows-from-within-code">Opening singularity terminal windows from within Code</h4>
+</div>
+<p>Again, a benefit of using Code in the singularity container is that you
+can use the embedded terminal windows, which in turn are in the singularity
+container.</p>
+<figure class="align-default" id="code-terminal">
+<img alt="_images/code-terminal.png" src="_images/code-terminal.png" />
+</figure>
+<p>To open a terminal window follow the steps in the figure above, or use the
+keyboard shortcut shown in the image.</p>
+<div class="docutils">
+<h4 class="rubric" id="managing-terminal-windows-in-code">Managing terminal windows in Code</h4>
+</div>
+<figure class="align-default" id="code-launch-terminals">
+<img alt="_images/code-terminals-management.png" src="_images/code-terminals-management.png" />
+</figure>
+<p>You can manage these singularity terminal windows within Code:</p>
+<ol class="arabic simple">
+<li><p>Note that (1) shows the <code class="docutils literal notranslate"><span class="pre">[COMP3631]</span> <span class="pre">Singularity&gt;</span></code> prompt indicating that
+these terminals are within the singularity container.</p></li>
+<li><p>Note that (2) shows a button to easily create new singularity terminal
+windows. You will need numerous such terminal windows in the future.</p></li>
+<li><p>Note that (3) shows you a drawer of your running terminal windows, and
+clicking on them will let you switch between them.</p></li>
+</ol>
+<div class="docutils">
+<h4 class="rubric" id="configure-git">Configure Git</h4>
+</div>
+<p>Git is a powerful tool used for code version control. If you are not familiar
+with Git, please make sure to study <a class="reference internal" href="lab1-optional.html"><span class="std std-doc">lab 1.2</span></a>.
+For now, we need to configure Git.</p>
+<p>Open a terminal window and execute the following commands one by one (each line
+represents a distinct command). After typing the first command, press the ENTER
+key to execute it, then proceed to the next line, and repeat the process by
+pressing ENTER again to execute the second command.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Rafael Papallas&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;r.papallas@leeds.ac.uk&quot;</span>
+</pre></div>
+</div>
+<p>Change the placeholder name and email to yours, obviously. The name and email
+will be used to “sign” your code changes and will appear in the git repository and
+on GitHub later on when you collaborate with other people.</p>
+<p>The next configuration is crucial. While using Git, especially for
+collaborative work, you may encounter conflicts or automatic merges that
+require your attention. In such cases, Git will prompt you to inspect files or
+write a commit message to save the automatic merge. By default, Git uses Vim
+as the text editor for these tasks. Vim is a powerful terminal-based text
+editor but can be unintuitive for beginners due to its steep learning curve. If
+you are not familiar with Vim and would prefer a different text editor, you can
+change this default setting by using the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.editor<span class="w"> </span>code
+</pre></div>
+</div>
+</section>
+<section id="setting-up-your-ros-environment">
+<span id="setup-ros-sec"></span><h2><span class="section-number">4.4. </span>Setting up your ROS environment<a class="headerlink" href="#setting-up-your-ros-environment" title="Link to this heading">#</a></h2>
+<div class="docutils">
+<h4 class="rubric" id="create-a-github-account-if-you-don-t-have-one">Create a GitHub account if you don’t have one.</h4>
+</div>
+<p>For this module you will need a GitHub account. It’s free to create. If you don’t
+have a GitHub account yet, please head to <a class="reference external" href="http://github.com">github.com</a> and create one.</p>
+<div class="docutils">
+<h4 class="rubric" id="set-up-ssh-key-with-github">Set up SSH key with GitHub</h4>
+</div>
+<p>Before you continue with the following, you will need to set
+up your SSH key with GitHub, if you haven’t already. Here is
+how to do this:</p>
+<ol class="arabic simple">
+<li><p>In a terminal run: <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">ed25519</span> <span class="pre">-C</span> <span class="pre">&quot;your_email&#64;example.com&quot;</span></code>. Replace with your email.</p></li>
+<li><p>Follow the instructions. It will first ask you where to
+save the key, just press ENTER to save to default
+location.</p></li>
+<li><p>It will then ask you for paraphrase (twice to confirm).
+Type a password you will use to communicate with github.
+The text in the field is hidden, so you will type but
+nothing will be printed on the screen (but the program
+reads your password normally).</p></li>
+<li><p>Run: <code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">~/.ssh/id_ed25519.pub</span></code> to get the public key.</p></li>
+<li><p>Head to GitHub <a class="reference external" href="https://github.com/settings/keys">here</a>
+and click “New SSH key” to create a new SSH key. As a
+title provide something sensible like “University PC” and
+paste the public key from the previous step in the “key”
+section. Finally, click “Add SSH key”.</p></li>
+</ol>
+<p>The above should be configured once.</p>
+<div class="docutils">
+<h4 class="rubric" id="test-your-ros-configuration">Test your ROS configuration</h4>
+</div>
+<p>With all the new tools we learnt, we can finally glue everything together to
+start working on this module. In ROS we need a working space (called <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code>
+for short). As we said, ROS tools are only available within the Singularity
+container. You need to do the following once for this module:</p>
+<ol class="arabic">
+<li><p>Open a singularity terminal in Code.</p></li>
+<li><p>We need to create a directory in the home directory, let’s move there: <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code>. Make sure you are there by running <code class="docutils literal notranslate"><span class="pre">pwd</span></code> and ensuring that we are in the
+home directory.</p></li>
+<li><p>We need to create the <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> directory and <code class="docutils literal notranslate"><span class="pre">src</span></code> within it, run <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">ros2_ws/src</span></code>.</p></li>
+<li><p>Let’s move into the source directory, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws/src</span></code>.</p></li>
+<li><p>Let’s clone the git repository for lab1, make sure you are in <code class="docutils literal notranslate"><span class="pre">~/ros2_ws/src</span></code>.
+Then run:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To be able to clone the lab1 repository below, you need to click on this url
+<a class="reference external" href="https://classroom.github.com/a/cl2yX-jd">classroom.github.com/a/cl2yX-jd</a>,
+login to your GitHub account, and then find your university username from
+the identifiers list. Click the button to accept the lab1 assignment.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">COMP3631</span><span class="o">/</span><span class="n">lab1</span><span class="o">-</span><span class="n">YOUR_GITHUB_USERNAME</span> <span class="n">lab1</span>
+</pre></div>
+</div>
+</li>
+<li><p>Make sure the directory is there by running <code class="docutils literal notranslate"><span class="pre">ls</span></code> and verify that a <code class="docutils literal notranslate"><span class="pre">lab1</span></code>
+directory exists now.</p></li>
+<li><p>Go a directory back, <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">..</span></code>, make sure you are in <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> by running
+<code class="docutils literal notranslate"><span class="pre">pwd</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> to build your ROS workspace.</p></li>
+<li><p>Make sure that <code class="docutils literal notranslate"><span class="pre">build</span></code>, <code class="docutils literal notranslate"><span class="pre">install</span></code> and <code class="docutils literal notranslate"><span class="pre">log</span></code> directories are created next to <code class="docutils literal notranslate"><span class="pre">src</span></code>; run <code class="docutils literal notranslate"><span class="pre">ls</span></code> to
+verify.</p></li>
+<li><p>Now in the terminal run <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">$HOME/.bashrc</span></code> to apply the changes in this session.</p></li>
+<li><p>Verify that everything works by running <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">lab1</span> <span class="pre">hello</span></code>. Do you get
+the greeting message? If so, well done, you configured your ROS environment
+successfully! If not, please check again as this means that you haven’t
+configured your environment correctly.</p></li>
+</ol>
+</section>
+<section id="remarks-and-checklist">
+<h2><span class="section-number">4.5. </span>Remarks and Checklist<a class="headerlink" href="#remarks-and-checklist" title="Link to this heading">#</a></h2>
+<p>Congratulations on completing this worksheet! By the end of this session,
+please ensure that you have achieved the following:</p>
+<ul class="simple">
+<li><p>You configured a text editor for Python and ROS programming.</p></li>
+<li><p>You are familiar with basic terminal programs (e.g., <code class="docutils literal notranslate"><span class="pre">ls</span></code>, <code class="docutils literal notranslate"><span class="pre">cd</span></code>, <code class="docutils literal notranslate"><span class="pre">pwd</span></code>, <code class="docutils literal notranslate"><span class="pre">rm</span></code>,
+<code class="docutils literal notranslate"><span class="pre">touch</span></code>, <code class="docutils literal notranslate"><span class="pre">mkdir</span></code>, etc.), and if not, you completed the <a class="reference internal" href="lab1-optional.html"><span class="std std-doc">lab worksheet
+1.2</span></a>.</p></li>
+<li><p>You understand the importance of Singularity in this module and know how to use
+it to run code.</p></li>
+<li><p>You set up a GitHub account and joined the lab1 assignment.</p></li>
+<li><p>You configured your ROS workspace with a <code class="docutils literal notranslate"><span class="pre">ros2_ws</span></code> directory in your home
+directory.</p></li>
+<li><p>You successfully executed the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">run</span> <span class="pre">lab1</span> <span class="pre">hello</span></code> command.</p></li>
+</ul>
+<p>If you have any questions or run into any issues, please don’t hesitate to
+reach out for assistance. You can approach one of the Teaching Assistants
+during their lab hours for immediate help or feel free to contact me.</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="faq.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Frequently Asked Questions (FAQ) and Troubleshooting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lab1-optional.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Lab 1.2: Learn about the command line interface and Git/GitHub</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aim">4.1. Aim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singularity">4.2. Singularity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-visual-studio-code-properly-for-this-module">4.3. Using Visual Studio Code properly for this module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-ros-environment">4.4. Setting up your ROS environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">4.5. Remarks and Checklist</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yanlong Huang, Andy Bulpitt, Xiao Wang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Yanlong Huang, Andy Bulpitt, Xiao Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
