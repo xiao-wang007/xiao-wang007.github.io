@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>11. Lab 6: Real-robot lab &#8212; COMP3631 Website</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=605502e1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script src="_static/documentation_options.js?v=296c0a1b"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab6';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="10. How to use the real-robot" href="using_the_real_robot.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/comp3631-logo-large-title.png" class="logo__image only-light" alt="COMP3631 Website - Home"/>
+    <script>document.write(`<img src="_static/comp3631-logo-large-title.png" class="logo__image only-dark" alt="COMP3631 Website - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="index.html">
+                    COMP3631 Lab Worksheets
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">1. Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teaching-assistants.html">2. Teaching/Lab Assistants</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">3. Frequently Asked Questions (FAQ) and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">4. Lab 1.1: Setting up your environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab1-optional.html">5. Lab 1.2: Learn about the command line interface and Git/GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">6. Lab 2: Writing a Talker and Listener</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">7. Lab 3: Actuating the turtlebot in simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">8. Lab 4: Mapping and Navigation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">9. Lab 5: Computer Vision: Processing robot’s camera view</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using_the_real_robot.html">10. How to use the real-robot</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">11. Lab 6: Real-robot lab</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 6: Real-robot lab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">11.1. Worksheet objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-pc-and-learn-how-to-use-the-real-robot">11.2. Setup your PC and learn how to use the real-robot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.3. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">11.4. Remarks and Checklist</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-6-real-robot-lab">
+<h1><span class="section-number">11. </span>Lab 6: Real-robot lab<a class="headerlink" href="#lab-6-real-robot-lab" title="Link to this heading">#</a></h1>
+<!-- **Worksheet Contact:** Rafael Papallas (r.papallas@leeds.ac.uk) -->
+<p><strong>Worksheet Contact:</strong> Xiao Wang (<a class="reference external" href="mailto:x&#46;wang16&#37;&#52;&#48;leeds&#46;ac&#46;uk">x<span>&#46;</span>wang16<span>&#64;</span>leeds<span>&#46;</span>ac<span>&#46;</span>uk</a>)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can access the robots to play with what you learnt from the labs, or test the modules for
+your project starting from Week 7 onwards. Access to the robots will be provided upon request
+during lab hours.</p>
+</div>
+<section id="worksheet-objective">
+<h2><span class="section-number">11.1. </span>Worksheet objective<a class="headerlink" href="#worksheet-objective" title="Link to this heading">#</a></h2>
+<p>The purpose of this worksheet is to learn how to use a real robot. The group
+project offers additional points for implementing your solution on a real
+robot. This lab will provide you with all the necessary information to
+accomplish this.</p>
+<p>You will be working in teams, and we expect all of you to actively participate
+in using the real robot. You can all collaborate on the same robot and PC.
+There is no need to submit anything for this lab.</p>
+<p>You can form random teams during the lab sessions; you do not have to be in the
+same group as the one assigned for the group project, for example.</p>
+</section>
+<section id="setup-your-pc-and-learn-how-to-use-the-real-robot">
+<h2><span class="section-number">11.2. </span>Setup your PC and learn how to use the real-robot<a class="headerlink" href="#setup-your-pc-and-learn-how-to-use-the-real-robot" title="Link to this heading">#</a></h2>
+<p>Before beginning the exercises, please carefully read <a class="reference internal" href="using_the_real_robot.html"><span class="std std-doc">this
+page</span></a> and set up your account accordingly.</p>
+</section>
+<section id="exercises">
+<h2><span class="section-number">11.3. </span>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<p>As a group, please complete the following exercises to ensure that you
+understand how to fully operate the robot, including actuation, using the
+camera for OpenCV tasks, and navigation and mapping.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Access lab6 files - Instructions</strong>
+Then execute the following commands:</p>
+<ul class="simple">
+<li><p>In a terminal, go to <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~/ros2_ws/src</span></code>.</p></li>
+<li><p>Run: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">git&#64;github.com:COMP3631-2025/lab6</span> <span class="pre">lab6</span></code></p>
+<ul>
+<li><p>Note the ” lab6” at the end of the the command: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">[...]</span> <span class="pre">lab6</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">$HOME/ros2_ws</span></code> and then <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> to build the new package.</p></li>
+</ul>
+</div>
+<p>First things first, make sure that you:</p>
+<ol class="arabic simple">
+<li><p>SSH to your robot (if you don’t know how, you should read <a class="reference internal" href="using_the_real_robot.html"><span class="std std-doc">this
+page</span></a> first).</p></li>
+<li><p>Start the robot drivers using:</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">turtlebot3_bringup</span> <span class="n">robot</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>That’s the <strong>only command</strong> you need to run on the robot. Keep the terminal window
+with the SSH session open, however.</p>
+<p>The rest of the commands mentioned in this worksheet should be carried out on a
+<strong>desktop PC, not on the robot</strong>.</p>
+<p>Here is an easy way to get started:</p>
+<ol class="arabic simple">
+<li><p>Enter into a singularity environment using the <code class="docutils literal notranslate"><span class="pre">ros</span></code> on the desktop PC.</p></li>
+<li><p>Launch Code using <code class="docutils literal notranslate"><span class="pre">code</span></code>. Use the embedded terminals in Code to execute the
+rest of the commands, however …</p></li>
+<li><p>When you open a new terminal in Code either (1) run <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span></code> pick the name from the
+list, (2) directly run <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span> <span class="pre">&lt;name_of_robot&gt;</span></code> or (3) simply put
+<code class="docutils literal notranslate"><span class="pre">workon_real_robot</span> <span class="pre">&lt;name_of_robot&gt;</span></code> in your <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> to not have to do this
+with every new terminal window.</p></li>
+</ol>
+<div class="docutils">
+<h4 class="rubric" id="exercise-1-attempt-to-run-the-firstwalk-py">Exercise 1: Attempt to run the <code class="docutils literal notranslate"><span class="pre">firstwalk.py</span></code></h4>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please never command the robot to drive faster than 0.2 m/s.</p>
+</div>
+<p>In a terminal window on the desktop PC, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">lab6</span> <span class="n">firstwalk</span>
+</pre></div>
+</div>
+<p>This is essentially the same file as in <a class="reference internal" href="lab3.html"><span class="std std-doc">lab 3</span></a>, with no modifications
+to make it work on a real robot, thanks to ROS abstraction. If the robot
+moves back and forth, then you’ve done it! Great job. Feel free to optionally
+play with different velocities (don’t forget to <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> after the changes).</p>
+<div class="docutils">
+<h4 class="rubric" id="exercise-2-make-the-robot-to-move-on-a-circle-and-square">Exercise 2: make the robot to move on a circle and square</h4>
+</div>
+<p>Now, try creating <code class="docutils literal notranslate"><span class="pre">square.py</span></code> and <code class="docutils literal notranslate"><span class="pre">circle.py</span></code> files under
+<code class="docutils literal notranslate"><span class="pre">~/ros2_ws/src/lab6/lab6</span></code> on the PC. Make the robot move in a circle and a
+square (you can refer to your solution from <code class="docutils literal notranslate"><span class="pre">lab3</span></code>). Remember to modify
+<code class="docutils literal notranslate"><span class="pre">setup.py</span></code> to let ROS know about your new scripts. After making these changes,
+run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> under <code class="docutils literal notranslate"><span class="pre">~/ros2_ws</span></code>.</p>
+<p>Test that your scripts are working on the real-robot by running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">lab6</span> <span class="n">circle</span>
+</pre></div>
+</div>
+<p>and then:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">lab6</span> <span class="n">square</span>
+</pre></div>
+</div>
+<div class="docutils">
+<h4 class="rubric" id="exercise-3-working-with-image-frames">Exercise 3: working with image frames</h4>
+</div>
+<p>There is a camera on the TurtleBot. The camera runs when you launch the
+<code class="docutils literal notranslate"><span class="pre">turtlebot3_bringup</span></code>.</p>
+<p>Initially, we considered using a third-party library for the sensor that was
+publishing the image view to the same topic as the one you subscribed to in the
+simulation labs (i.e <code class="docutils literal notranslate"><span class="pre">/camera/image_raw</span></code>). However, this resulted in slow
+streaming with a lot of lag. Therefore, we developed our own ROS node that
+reads the image frame directly from the robot, compresses it, and sends the
+compressed image over the network at our desired frame rate. This led to much
+more efficient streaming with minimal lag. You can find our custom code
+<a class="reference external" href="https://github.com/rpapallas/pi_camera_ros">here</a>, if optionally interested
+in reading the code.</p>
+<p>Now, check the list of topics (<code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">topic</span> <span class="pre">list</span></code>). You should see new topic
+names, including <code class="docutils literal notranslate"><span class="pre">/camera/image/compressed</span></code>. If you don’t see anything, make
+sure you run <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span></code>.</p>
+<p>This technical issue also presents a new learning opportunity for you. Your
+task is to create a new node that will interface the compressed image topic
+with the <code class="docutils literal notranslate"><span class="pre">image_raw</span></code> one (which does not currently exists), so that your code
+remains consistent whether working in simulation or with the real robot. You
+will run this new node when working with the real robot to make
+<code class="docutils literal notranslate"><span class="pre">/camera/image_raw</span></code> available.</p>
+<p>You will find a script named <code class="docutils literal notranslate"><span class="pre">compressed_to_image_raw.py</span></code>. Open it and complete
+the <code class="docutils literal notranslate"><span class="pre">TODO</span></code> comments.</p>
+<p>Once you finished with the TODO comments, make sure to run <code class="docutils literal notranslate"><span class="pre">colcon</span> <span class="pre">build</span></code> and
+then run (don’t forget <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">lab6</span> <span class="n">compressed_to_image_raw</span>
+</pre></div>
+</div>
+<p>Now your node should read the compressed image over the network, decompress it
+and republish it as a raw image under <code class="docutils literal notranslate"><span class="pre">/camera/image_raw</span></code>. Since the conversion
+and re-publishing happens on the PC, when we subscribe to the
+<code class="docutils literal notranslate"><span class="pre">/camera/image_raw</span></code> on the PC again (say in your <code class="docutils literal notranslate"><span class="pre">group_project</span></code> code), it
+would be faster than subscribing to a <code class="docutils literal notranslate"><span class="pre">/camera/image_raw</span></code> published over the
+network by the robot.</p>
+<p>Test it (don’t forget <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span></code>):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">image_view</span> <span class="n">image_view</span> <span class="n">image</span><span class="o">:=/</span><span class="n">camera</span><span class="o">/</span><span class="n">image_raw</span>
+</pre></div>
+</div>
+<p>Waive to the camera and smile.</p>
+<div class="docutils">
+<h4 class="rubric" id="navigation-and-mapping">Navigation and Mapping</h4>
+</div>
+<p>In <a class="reference internal" href="lab4.html"><span class="std std-doc">Lab 4</span></a>, we covered mapping and navigation. The commands you learned there
+also apply here. On the desktop PC (not the robot), you can use the same commands as
+you did in simulation (again, don’t forget to run <code class="docutils literal notranslate"><span class="pre">workon_real_robot</span></code>).</p>
+<p><strong>Start mapping:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">launch</span> <span class="n">turtlebot3_cartographer</span> <span class="n">cartographer</span><span class="o">.</span><span class="n">launch</span><span class="o">.</span><span class="n">py</span> <span class="n">use_sim_time</span><span class="o">:=</span><span class="kc">True</span>
+</pre></div>
+</div>
+<p><strong>Teleoperate robot from keyboard:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ros2</span> <span class="n">run</span> <span class="n">turtlebot3_teleop</span> <span class="n">teleop_keyboard</span>
+</pre></div>
+</div>
+<p><strong>Save map to file:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ros2 run nav2_map_server map_saver_cli -f $HOME/ros2_ws/src/lab6/maps/mymap
+</pre></div>
+</div>
+<p><strong>Load a saved map:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:=$HOME/ros2_ws/src/lab6/maps/mymap.yaml
+</pre></div>
+</div>
+<div class="docutils">
+<h4 class="rubric" id="exercise-4-create-a-simple-map-and-save-it-to-a-file">Exercise 4: Create a simple map and save it to a file</h4>
+</div>
+<p>For this exercise, simply experiment with the commands provided above to ensure
+they work and that you know how to generate a map.</p>
+<ol class="arabic simple">
+<li><p>Generate a map using the keyboard teleoperation program to move the robot
+around from the desktop PC.</p></li>
+<li><p>Save the map to a file.</p></li>
+<li><p>Reload the map from file using the <code class="docutils literal notranslate"><span class="pre">turtlebot3_navigation2</span></code> stack.</p></li>
+<li><p>Using Rviz, send navigation goals to the robot and see it moving towards that goal.</p></li>
+</ol>
+</section>
+<section id="remarks-and-checklist">
+<h2><span class="section-number">11.4. </span>Remarks and Checklist<a class="headerlink" href="#remarks-and-checklist" title="Link to this heading">#</a></h2>
+<p>Please check, by the end of this worksheet, that <strong>all members</strong> of the group …</p>
+<ul class="simple">
+<li><p>Understand how to use the real-robot.</p></li>
+<li><p>you know how to send velocities to the robot.</p></li>
+<li><p>you know how to utilise the camera with OpenCV.</p></li>
+<li><p>understand how to run code on the real robot (i.e., you only run <code class="docutils literal notranslate"><span class="pre">robot.launch.py</span></code> on
+the real-robot, you can run the rest on the desktop PC).</p></li>
+</ul>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="using_the_real_robot.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>How to use the real-robot</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-objective">11.1. Worksheet objective</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-pc-and-learn-how-to-use-the-real-robot">11.2. Setup your PC and learn how to use the real-robot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">11.3. Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remarks-and-checklist">11.4. Remarks and Checklist</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Yanlong Huang, Andy Bulpitt, Xiao Wang
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025, Yanlong Huang, Andy Bulpitt, Xiao Wang.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
