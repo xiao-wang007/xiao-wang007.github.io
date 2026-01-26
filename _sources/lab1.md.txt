@@ -14,7 +14,7 @@ the industry.
 ```
 
 
-Please aim to complete this worksheet during **week 1**. The labs scheduled will offer 
+Please aim to complete this worksheet during **week 2**. The labs scheduled will offer 
 support and guidance for this worksheet. This worksheet is **formative**, which 
 means you are not required to submit any work, and it will not be graded. However,
 the labs will help you complete your ROS project in this module, which accounts 

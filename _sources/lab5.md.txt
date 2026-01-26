@@ -19,7 +19,7 @@ Then execute the following commands:
 
 There are two aims to this worksheet: First to learn the basics of taking in data from the
 camera, processing it, and then making decisions based on it and second to learn how to perform image stitching.
-Please aim to finish the lab content by **week 5**. By the end of this session, you will:
+Please aim to finish the lab content by **week 6**. By the end of this session, you will:
 
 - Be able to display the camera feed to the screen.
 - Extract a specific colour from the image and only display this.

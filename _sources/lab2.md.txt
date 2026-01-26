@@ -3,7 +3,7 @@
 <!-- **Worksheet Contact:** Rafael Papallas (r.papallas@leeds.ac.uk) -->
 **Worksheet Contact:** Xiao Wang (x.wang16@leeds.ac.uk)
 
-Please aim to complete this worksheet during **week 2**. The labs scheduled in week
+Please aim to complete this worksheet during **week 3**. The labs scheduled in week
 3 will offer support and guidance for this worksheet.
 
 ```{note}
